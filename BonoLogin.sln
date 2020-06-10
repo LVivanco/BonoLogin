@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BonoLogin", "BonoLogin\BonoLogin.csproj", "{A429C239-05DE-4A82-AED0-33F94DD2821B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A429C239-05DE-4A82-AED0-33F94DD2821B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A429C239-05DE-4A82-AED0-33F94DD2821B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A429C239-05DE-4A82-AED0-33F94DD2821B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A429C239-05DE-4A82-AED0-33F94DD2821B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CC367FA-5C8A-46B6-9D20-D16503E5A960}
+	EndGlobalSection
+EndGlobal

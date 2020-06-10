@@ -1,0 +1,144 @@
+﻿@model BonoLogin.Models.DatosBono
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DatosBono</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Metodo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Metodo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValNominal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValNominal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValComercial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValComercial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnosVida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnosVida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoAno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoAno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FrecPago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FrecPago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tdea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tdea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ianual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ianual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ir)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pprima)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pprima)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pestimacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pestimacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pcolocacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pcolocacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pflotacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pflotacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PCavali)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PCavali)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
