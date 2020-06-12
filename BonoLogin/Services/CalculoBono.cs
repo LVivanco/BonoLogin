@@ -49,6 +49,9 @@ namespace BonoLogin.Services
                 case "diaria":
                     d = 1;
                     break;
+                case "semanal":
+                    d = 1;
+                    break;
                 case "quincenal":
                     d = 15;
                     break;
@@ -308,12 +311,12 @@ namespace BonoLogin.Services
             return flujoBonista;
         }
 
-        public double ValorActual(double[] flujoBonista, double tasaDescuentoAnual, int numeroPeriodos)
+        public double ValorActual(double[] flujoBonista, double tasaDescuentoPeriodo, int numeroPeriodos)
         {
             double valorActual = 0;
             for (int i = 1; i <= numeroPeriodos; i++)
             {
-                valorActual = valorActual + ((flujoBonista[i]) / Math.Pow(i + tasaDescuentoAnual, i));
+                valorActual = valorActual + ((flujoBonista[i]) / Math.Pow(1 + tasaDescuentoPeriodo, i));
             }
             return valorActual;
         }

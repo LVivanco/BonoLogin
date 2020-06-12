@@ -33,10 +33,7 @@ namespace BonoLogin.Models
         public DbSet<DatosBono> DatosBono { get; set; }
         public DbSet<PGracia> PGracia { get; set; }
         public DbSet<ResultadoBono> ResultadoBono { get; set; }
-        public DbSet<FlujoEmisor> FlujoEmisor { get; set; }
-        public DbSet<FlujoEmisorEsc> FlujoEmisorEsc { get; set; }
-        public DbSet<FlujoBonista> FlujoBonista { get; set; }
-
+  
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

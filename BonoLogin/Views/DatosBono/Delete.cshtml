@@ -1,10 +1,11 @@
 ﻿@model BonoLogin.Models.DatosBono
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Borrar";
+    ViewBag.name = Model.Nombre;
 }
 
-<h2>Delete</h2>
+<h2>Borrar @ViewBag.name</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -100,11 +101,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Pestimacion)
+            @Html.DisplayNameFor(model => model.Pestructuracion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Pestimacion)
+            @Html.DisplayFor(model => model.Pestructuracion)
         </dd>
 
         <dt>
@@ -137,8 +138,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar a la lista", "Index")
         </div>
     }
 </div>

@@ -2,10 +2,12 @@
 @model BonoLogin.Models.DatosBono
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
+    ViewBag.name = Model.Nombre;
+    int id_ficha = (int)Model.Id;
 }
 
-<h2>Details</h2>
+<h2>Detalle @ViewBag.name</h2>
 
 <div>
     <h4>DatosBono</h4>
@@ -100,11 +102,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Pestimacion)
+            @Html.DisplayNameFor(model => model.Pestructuracion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Pestimacion)
+            @Html.DisplayFor(model => model.Pestructuracion)
         </dd>
 
         <dt>
@@ -143,25 +145,31 @@
                     {
                         case "T":
                             <li>Periodo @pg.Periodo: "Total"</li>
+                            @Html.ActionLink("Editar", "EditPG", new { id = pg.Id })
                             break;
                         case "P":
                             <li>Periodo @pg.Periodo: "Parcial"</li>
+                            @Html.ActionLink("Editar", "EditPG", new { id = pg.Id })
                             break;
                         case "S":
                             <li>Periodo @pg.Periodo: "Simple"</li>
+                            @Html.ActionLink("Editar", "EditPG", new { id = pg.Id })
                             break;
                         default:
                             <li>Periodo @pg.Periodo: "Simple"</li>
+                            @Html.ActionLink("Editar", "EditPG", new { id = pg.Id })
                             break;
                     }
-
+                    @*@Html.ActionLink("Update", "EditPGOne", new { id = pg.Id});*@
                 }
             </ul>
+            @*@Html.ActionLink("Edit PG","EditPG", new { id = Model.Id});*@
          </dd>
     </dl>
 </div>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+   @* @Html.ActionLink("Editar", "Edit", new { id = Model.Id })*@
+    @Html.ActionLink("Ver resultados","Results", new { id = id_ficha})
+    @Html.ActionLink("Regresar a la lista", "Index")
 </p>

@@ -1,0 +1,116 @@
+﻿@model BonoLogin.Models.ResultadoBono
+
+@{
+    ViewBag.Title = "Resultados";
+    string nombre = (string)ViewBag.Nombre;
+    int periodos = Model.Bono.Split('|').ToList().Count;
+
+}
+
+<h2>Resultatos</h2>
+
+<div>
+    <h4>Resultado de @ViewBag.Nombre</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Nombre")
+        </dt>
+
+        <dd>
+            @nombre
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Van)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Van)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Va)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Va)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tcea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tcea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tir)
+        </dd>
+
+    </dl>
+</div>
+<p>
+     @Html.ActionLink("Regresar a la lista", "Index")
+</p>
+
+<table class="table">
+    <tr>
+        <th>Periodo</th>
+        <th>Bono</th>
+        <th>Bono Indexado</th>
+        <th>Cupon</th>
+        <th>Cuota</th>
+        <th>Amortizacón</th>
+        <th>Prima</th>
+        <th>Escudo</th>
+        <th>Flujo Emisor</th>
+        <th>Flujo Emisor Escudo</th>
+        <th>Flujo Bonista</th>
+    </tr>
+
+    @for (int i = 0; i <= periodos-1; i++)
+    {
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @Model.Bono.Split('|').ToList()[i]
+            </td>
+            <td>
+                @Model.BonoIndexado.Split('|').ToList()[i]
+            </td>
+            <td>
+                @Model.Cupon.Split('|').ToList()[i]
+            </td>
+            <td>
+                @Model.Cuota.Split('|').ToList()[i]
+            </td>
+            <td>
+                @Model.Amortizacion.Split('|').ToList()[i]
+            </td>
+            <td>
+                @Model.Prima.Split('|').ToList()[i]
+            </td>
+            <td>
+                @Model.Escudo.Split('|').ToList()[i]
+            </td>
+            <td>
+                @Model.FlujoEmisor.Split('|').ToList()[i]
+            </td>
+            <td>
+                @Model.FlujoEmisorEsc.Split('|').ToList()[i]
+            </td>
+            <td>
+                @Model.FlujoBonista.Split('|').ToList()[i]
+            </td>
+        </tr>
+    }
+
+</table>

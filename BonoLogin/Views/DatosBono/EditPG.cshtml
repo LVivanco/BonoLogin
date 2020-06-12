@@ -1,45 +1,46 @@
-﻿@using BonoLogin.Models
-@model BonoLogin.Models.PGracia
+﻿@model BonoLogin.Models.PGracia
 
 @{
-    ViewBag.Title = "EditPG";
-
+    ViewBag.Title = "Periodo de Gracia";
+    int id_ficha = (int)Model.DatosBonoId;
+    string periodo = Model.Periodo.ToString();
 }
 
-<h2>EditPG</h2>
+<h2>Editar tipo de Periodo de Gracia</h2>
 
 
-@foreach (var pg in (List<PGracia>)ViewBag.ListPGO)
+@using (Html.BeginForm())
 {
-    using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Plazo gracia del periodo "@periodo"</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Periodo)
+        @Html.HiddenFor(model => model.DatosBonoId)
 
-        <div class="form-horizontal">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.Id)
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Tipo, "Periodo " + pg.Periodo.ToString() + ": ", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Tipo, (List<SelectListItem>)ViewBag.TiposPG, htmlAttributes: new { @class = "custom-select" })
-                    @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Tipo, (List<SelectListItem>)ViewBag.TiposPg, htmlAttributes: new { @class = "custom-select" })
+                @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
             </div>
-             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>
-
         </div>
-    }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
 }
 
-    <div>
-        @Html.ActionLink("Back to Details", "Details", new { id = ViewBag.FichaId })
-    </div>
+<div>
+    @Html.ActionLink("Regresar al detalle", "Details", new { id = id_ficha})
+</div>
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

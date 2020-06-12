@@ -41,11 +41,29 @@ namespace BonoLogin.Controllers
             }
             DatosBono datosBono = db.DatosBono.Find(id);
             ViewBag.ListPG = service.ListPGracia(datosBono.Id);
+            ViewBag.OptionPG = service.TiposPG();
             if (datosBono == null)
             {
                 return HttpNotFound();
             }
             return View(datosBono);
+        }
+
+        //GET: DatosBono/Resultados/4
+        public ActionResult Results(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ResultadoBono resultBono = service.GetResultado((int)id);
+            DatosBono datosBono = db.DatosBono.Find(id);
+            if (resultBono == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Nombre = datosBono.Nombre;
+            return View(resultBono);
         }
 
         // GET: DatosBono/Create
@@ -54,6 +72,7 @@ namespace BonoLogin.Controllers
             ViewBag.Metodos = service.Metodos();
             ViewBag.TipoAnios = service.TipoAnios();
             ViewBag.Frecuencias = service.Frecuencias();
+            ViewBag.TiposTasa = service.TiposTasa();
             return View();
         }
 
@@ -62,7 +81,7 @@ namespace BonoLogin.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Metodo,ValNominal,ValComercial,AnosVida,TipoAno,FrecPago,Tea,Tdea,Ianual,Ir,Pprima,Pestimacion,Pcolocacion,Pflotacion,PCavali,UserId")] DatosBono datosBono)
+        public ActionResult Create([Bind(Include = "Id,Nombre,Metodo,ValNominal,ValComercial,AnosVida,TipoAno,FrecPago,Tea,Tdea,Ianual,Ir,Pprima,Pestructuracion,Pcolocacion,Pflotacion,PCavali,UserId")] DatosBono datosBono)
         {
             datosBono.UserId = User.Identity.GetUserId();
             int numPeriodos = calculo.NumeroPeriodos(datosBono.TipoAno,datosBono.FrecPago,datosBono.AnosVida);
@@ -71,6 +90,7 @@ namespace BonoLogin.Controllers
                 db.DatosBono.Add(datosBono);
                 db.SaveChanges();
                 service.CreatePG(datosBono.Id, numPeriodos);
+                service.CreateResult(datosBono.Id,true);
                 return RedirectToAction("Index");
             }
            return View(datosBono);
@@ -91,6 +111,7 @@ namespace BonoLogin.Controllers
             ViewBag.Metodos = service.Metodos();
             ViewBag.TipoAnios = service.TipoAnios();
             ViewBag.Frecuencias = service.Frecuencias();
+            ViewBag.TiposTasa = service.TiposTasa();
             return View(datosBono);
         }
 
@@ -99,7 +120,7 @@ namespace BonoLogin.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Metodo,ValNominal,ValComercial,AnosVida,TipoAno,FrecPago,Tea,Tdea,Ianual,Ir,Pprima,Pestimacion,Pcolocacion,Pflotacion,PCavali,UserId")] DatosBono datosBono)
+        public ActionResult Edit([Bind(Include = "Id,Nombre,Metodo,ValNominal,ValComercial,AnosVida,TipoAno,FrecPago,Tea,Tdea,Ianual,Ir,Pprima,Pestructuracion,Pcolocacion,Pflotacion,PCavali,UserId")] DatosBono datosBono)
         {
             string idCurrentUser = User.Identity.GetUserId();
             datosBono.UserId = idCurrentUser;
@@ -115,6 +136,38 @@ namespace BonoLogin.Controllers
             }
             return View(datosBono);
         }
+
+        // GET: DatosBono/EditPG/5
+        public ActionResult EditPG(int? id) {
+            PGracia pg = null;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            pg = db.PGracia.Find(id);
+            if (pg == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.TiposPg = service.TiposPG();
+            return View(pg);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPG([Bind(Include = "Id,Tipo,Periodo,DatosBonoId")] PGracia periodoGracia)
+        {
+            int idCurrentFicha = periodoGracia.DatosBonoId;
+            if (ModelState.IsValid)
+            {
+                service.EditPG(periodoGracia.Id,periodoGracia.Tipo);
+                service.CreateResult(idCurrentFicha, false);
+                return RedirectToAction("Details", new { id = idCurrentFicha});
+            }
+            ViewBag.TiposPg = service.TiposPG();
+            return View(periodoGracia);
+        }
+
 
         // GET: DatosBono/Delete/5
         public ActionResult Delete(int? id)
@@ -150,6 +203,13 @@ namespace BonoLogin.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult EditPGOne(int id) {
+
+            return View("Details");
+        }
+
+        /*Vista de Resultados*/
 
      }
 }

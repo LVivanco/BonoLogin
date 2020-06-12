@@ -188,12 +188,29 @@
     <Compile Include="Migrations\202006092337063_fixIdUser.Designer.cs">
       <DependentUpon>202006092337063_fixIdUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006102127375_new.cs" />
+    <Compile Include="Migrations\202006102127375_new.Designer.cs">
+      <DependentUpon>202006102127375_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006102219185_name.cs" />
+    <Compile Include="Migrations\202006102219185_name.Designer.cs">
+      <DependentUpon>202006102219185_name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006102307480_result.cs" />
+    <Compile Include="Migrations\202006102307480_result.Designer.cs">
+      <DependentUpon>202006102307480_result.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006121751543_pruebaCadena.cs" />
+    <Compile Include="Migrations\202006121751543_pruebaCadena.Designer.cs">
+      <DependentUpon>202006121751543_pruebaCadena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006121826356_newdb.cs" />
+    <Compile Include="Migrations\202006121826356_newdb.Designer.cs">
+      <DependentUpon>202006121826356_newdb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DatosBono.cs" />
-    <Compile Include="Models\FlujoBonista.cs" />
-    <Compile Include="Models\FlujoEmisor.cs" />
-    <Compile Include="Models\FlujoEmisorEsc.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PGracia.cs" />
@@ -225,6 +242,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\site.js" />
+    <Content Include="Scripts\tea.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -264,6 +283,7 @@
     <Content Include="Views\DatosBono\Details.cshtml" />
     <Content Include="Views\DatosBono\Edit.cshtml" />
     <Content Include="Views\DatosBono\Index.cshtml" />
+    <Content Include="Views\DatosBono\Results.cshtml" />
     <Content Include="Views\DatosBono\EditPG.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +308,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006092337063_fixIdUser.resx">
       <DependentUpon>202006092337063_fixIdUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006102127375_new.resx">
+      <DependentUpon>202006102127375_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006102219185_name.resx">
+      <DependentUpon>202006102219185_name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006102307480_result.resx">
+      <DependentUpon>202006102307480_result.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006121751543_pruebaCadena.resx">
+      <DependentUpon>202006121751543_pruebaCadena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006121826356_newdb.resx">
+      <DependentUpon>202006121826356_newdb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
