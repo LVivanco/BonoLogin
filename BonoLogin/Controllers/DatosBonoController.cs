@@ -63,6 +63,7 @@ namespace BonoLogin.Controllers
                 return HttpNotFound();
             }
             ViewBag.Nombre = datosBono.Nombre;
+            ViewBag.Moneda = datosBono.Moneda;
             return View(resultBono);
         }
 
@@ -73,6 +74,7 @@ namespace BonoLogin.Controllers
             ViewBag.TipoAnios = service.TipoAnios();
             ViewBag.Frecuencias = service.Frecuencias();
             ViewBag.TiposTasa = service.TiposTasa();
+            ViewBag.TipoMoneda = service.TiposMoneda();
             return View();
         }
 
@@ -81,7 +83,7 @@ namespace BonoLogin.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Metodo,ValNominal,ValComercial,AnosVida,TipoAno,FrecPago,Tea,Tdea,Ianual,Ir,Pprima,Pestructuracion,Pcolocacion,Pflotacion,PCavali,UserId")] DatosBono datosBono)
+        public ActionResult Create([Bind(Include = "Id,Nombre,Moneda,Metodo,ValNominal,ValComercial,AnosVida,TipoAno,FrecPago,Tea,Tdea,Ianual,Ir,Pprima,Pestructuracion,Pcolocacion,Pflotacion,PCavali,UserId")] DatosBono datosBono)
         {
             datosBono.UserId = User.Identity.GetUserId();
             int numPeriodos = calculo.NumeroPeriodos(datosBono.TipoAno,datosBono.FrecPago,datosBono.AnosVida);
@@ -120,7 +122,7 @@ namespace BonoLogin.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Metodo,ValNominal,ValComercial,AnosVida,TipoAno,FrecPago,Tea,Tdea,Ianual,Ir,Pprima,Pestructuracion,Pcolocacion,Pflotacion,PCavali,UserId")] DatosBono datosBono)
+        public ActionResult Edit([Bind(Include = "Id,Nombre,Moneda,Metodo,ValNominal,ValComercial,AnosVida,TipoAno,FrecPago,Tea,Tdea,Ianual,Ir,Pprima,Pestructuracion,Pcolocacion,Pflotacion,PCavali,UserId")] DatosBono datosBono)
         {
             string idCurrentUser = User.Identity.GetUserId();
             datosBono.UserId = idCurrentUser;

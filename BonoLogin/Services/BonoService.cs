@@ -387,6 +387,25 @@ namespace BonoLogin.Services
             return lst;
         }
 
+        public List<SelectListItem> TiposMoneda()
+        {
+            List<SelectListItem> lst = new List<SelectListItem>()
+            {
+                new SelectListItem() {
+                    Text = "S/",
+                    Value = "Soles"
+                },
+                new SelectListItem() {
+                    Text = "$",
+                    Value = "Dollar"
+                },
+                new SelectListItem() {
+                    Text = "€",
+                    Value = "Euro"
+                }
+            };
+            return lst;
+        }
 
     }
 }

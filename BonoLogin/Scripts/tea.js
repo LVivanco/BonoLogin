@@ -86,8 +86,14 @@ function CalculoTEA(id_tasa, id_tipoTasa, id_frecTasa, id_frecCap, id_btnCal, id
 
     btnTEA.addEventListener('click', (ev) => {
         let val = CalcularTea(tasa_ingresada.value, tipoTasa.value, frecTasa.value, capi.value);
-        result_Tea.value = val * 100;
+        result_Tea.value = numeroDecimales(val*100,6);
     });
+}
+
+function numeroDecimales(numero, decimales) {
+    let e = Math.pow(10, decimales);
+    let n = Math.round(numero * e) / e;
+    return n;
 }
 
 //console.log("Aqui ESTOY!!!!");

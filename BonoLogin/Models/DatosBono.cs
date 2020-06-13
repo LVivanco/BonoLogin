@@ -14,6 +14,9 @@ namespace BonoLogin.Models
         [Display(Name = "Nombre")]
         public string Nombre { get; set; }
         [Required]
+        [Display(Name = "Tipo de Moneda")]
+        public string Moneda { get; set; }
+        [Required]
         [Display(Name = "Metodo")]
         public string Metodo { get; set; }
         [Required]

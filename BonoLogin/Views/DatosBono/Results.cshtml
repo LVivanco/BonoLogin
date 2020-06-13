@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Resultados";
-    string nombre = (string)ViewBag.Nombre;
     int periodos = Model.Bono.Split('|').ToList().Count;
 
 }
@@ -14,11 +13,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayName("Nombre")
+            @Html.DisplayName("Nombre: ")
         </dt>
 
         <dd>
-            @nombre
+            @ViewBag.Nombre
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Tipo de moneda: ")
+        </dt>
+
+        <dd>
+            @ViewBag.Moneda
         </dd>
 
         <dt>
