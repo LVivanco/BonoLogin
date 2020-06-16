@@ -3,121 +3,135 @@
 @{
     ViewBag.Title = "Resultados";
     int periodos = Model.Bono.Split('|').ToList().Count;
-
 }
 
-<h2>Resultatos</h2>
+<!--BODY-->
+<div class="container w-100">
+    <div class="card text-center mt-5 p-3 shadow">
+        <h2>Resultados de @ViewBag.Nombre</h2>
+        <hr />
+        <div class="text-left mb-4">
+            @Html.ActionLink("Regresar a la lista:", "Index", routeValues: null, htmlAttributes: new { @class="btn bg-own-blue" })
+        </div>
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayName("Nombre: ")
+                </th>
+                <td>
+                    @ViewBag.Nombre
+                </td>
+            </tr>
 
-<div>
-    <h4>Resultado de @ViewBag.Nombre</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayName("Nombre: ")
-        </dt>
+            <tr>
+                <th>
+                    @Html.DisplayName("Tipo moneda: ")
+                </th>
+                <td>
+                    @ViewBag.Moneda
+                </td>
+            </tr>
 
-        <dd>
-            @ViewBag.Nombre
-        </dd>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Van)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Van)
+                </td>
+            </tr>
 
-        <dt>
-            @Html.DisplayName("Tipo de moneda: ")
-        </dt>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Va)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Va)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tcea)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Tcea)
+                </td>
+            </tr>
 
-        <dd>
-            @ViewBag.Moneda
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Van)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Van)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Va)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Va)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tcea)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tcea)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tir)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tir)
-        </dd>
-
-    </dl>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tir)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Tir)
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <h4 class="text-left">Flujo: </h4>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Periodo</th>
+                        <th>Bono</th>
+                        <th>Bono Indexado</th>
+                        <th>Cupon</th>
+                        <th>Cuota</th>
+                        <th>Amortizacón</th>
+                        <th>Prima</th>
+                        <th>Escudo</th>
+                        <th>Flujo Emisor</th>
+                        <th>Flujo Emisor Escudo</th>
+                        <th>Flujo Bonista</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i <= periodos - 1; i++)
+                    {
+                        <tr>
+                            <td>
+                                @i
+                            </td>
+                            <td>
+                                @Model.Bono.Split('|').ToList()[i]
+                            </td>
+                            <td>
+                                @Model.BonoIndexado.Split('|').ToList()[i]
+                            </td>
+                            <td>
+                                @Model.Cupon.Split('|').ToList()[i]
+                            </td>
+                            <td>
+                                @Model.Cuota.Split('|').ToList()[i]
+                            </td>
+                            <td>
+                                @Model.Amortizacion.Split('|').ToList()[i]
+                            </td>
+                            <td>
+                                @Model.Prima.Split('|').ToList()[i]
+                            </td>
+                            <td>
+                                @Model.Escudo.Split('|').ToList()[i]
+                            </td>
+                            <td>
+                                @Model.FlujoEmisor.Split('|').ToList()[i]
+                            </td>
+                            <td>
+                                @Model.FlujoEmisorEsc.Split('|').ToList()[i]
+                            </td>
+                            <td>
+                                @Model.FlujoBonista.Split('|').ToList()[i]
+                            </td>
+                        </tr>
+                    }
+               </tbody>
+            </table>
+        </div>
+        <div class="text-left mb-4 mt-4">
+            @Html.ActionLink("Regresar a la lista:", "Index", routeValues: null, htmlAttributes: new { @class = "btn bg-own-blue" })
+        </div>
+    </div>
 </div>
-<p>
-     @Html.ActionLink("Regresar a la lista", "Index")
-</p>
+<!--BODY-->
 
-<table class="table">
-    <tr>
-        <th>Periodo</th>
-        <th>Bono</th>
-        <th>Bono Indexado</th>
-        <th>Cupon</th>
-        <th>Cuota</th>
-        <th>Amortizacón</th>
-        <th>Prima</th>
-        <th>Escudo</th>
-        <th>Flujo Emisor</th>
-        <th>Flujo Emisor Escudo</th>
-        <th>Flujo Bonista</th>
-    </tr>
-
-    @for (int i = 0; i <= periodos-1; i++)
-    {
-        <tr>
-            <td>
-                @i
-            </td>
-            <td>
-                @Model.Bono.Split('|').ToList()[i]
-            </td>
-            <td>
-                @Model.BonoIndexado.Split('|').ToList()[i]
-            </td>
-            <td>
-                @Model.Cupon.Split('|').ToList()[i]
-            </td>
-            <td>
-                @Model.Cuota.Split('|').ToList()[i]
-            </td>
-            <td>
-                @Model.Amortizacion.Split('|').ToList()[i]
-            </td>
-            <td>
-                @Model.Prima.Split('|').ToList()[i]
-            </td>
-            <td>
-                @Model.Escudo.Split('|').ToList()[i]
-            </td>
-            <td>
-                @Model.FlujoEmisor.Split('|').ToList()[i]
-            </td>
-            <td>
-                @Model.FlujoEmisorEsc.Split('|').ToList()[i]
-            </td>
-            <td>
-                @Model.FlujoBonista.Split('|').ToList()[i]
-            </td>
-        </tr>
-    }
-
-</table>

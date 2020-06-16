@@ -6,40 +6,39 @@
     string periodo = Model.Periodo.ToString();
 }
 
-<h2>Editar tipo de Periodo de Gracia</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Plazo gracia del periodo "@periodo"</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model => model.Periodo)
-        @Html.HiddenFor(model => model.DatosBonoId)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+<!--BODY-->
+<div class="container w-100 d-flex justify-content-center">
+    <div class="card text-center mt-5 p-3 shadow">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <h2>Editar Periodo de gracia:</h2>
+            <h3>Periodo "@periodo"</h3>
+            <hr />
+            <!--HIDDEN-->
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Periodo)
+            @Html.HiddenFor(model => model.DatosBonoId)
+            <!--HIDDEN-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label" })
                 @Html.DropDownListFor(model => model.Tipo, (List<SelectListItem>)ViewBag.TiposPg, htmlAttributes: new { @class = "custom-select" })
                 @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
             </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+            <input type="submit" value="Guardar" class="btn bg-own-red" />
+        }
+        <hr />
+        <div>
+            @Html.ActionLink("Regresar al detalle", "Details", new { id = id_ficha }, htmlAttributes: new { @class="btn bg-own-blue"})
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Regresar al detalle", "Details", new { id = id_ficha})
 </div>
+
+<!--Espacio en blanco-->
+<div style="height: 15vh;"></div>
+<!--Fin Espacio en blanco-->
+<!--BODY-->
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

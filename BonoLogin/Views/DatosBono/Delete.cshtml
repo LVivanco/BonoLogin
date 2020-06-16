@@ -1,145 +1,219 @@
-﻿@model BonoLogin.Models.DatosBono
+﻿@using BonoLogin.Models
+@model BonoLogin.Models.DatosBono
 
 @{
     ViewBag.Title = "Borrar";
     ViewBag.name = Model.Nombre;
+    int id_ficha = (int)Model.Id;
 }
 
-<h2>Borrar @ViewBag.name</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>DatosBono</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Metodo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Metodo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ValNominal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ValNominal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ValComercial)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ValComercial)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnosVida)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnosVida)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TipoAno)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TipoAno)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FrecPago)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FrecPago)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tea)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tea)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tdea)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tdea)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ianual)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ianual)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ir)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ir)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pprima)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pprima)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pestructuracion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pestructuracion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pcolocacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pcolocacion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pflotacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pflotacion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PCavali)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PCavali)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Borrar" class="btn btn-default" /> |
-            @Html.ActionLink("Regresar a la lista", "Index")
+<!--BODY-->
+<div class="container w-100">
+    <div class="card text-center mt-5 p-3 shadow">
+        <div class="text-left">
+            <h2>Borrar registro @ViewBag.name</h2>
+            <h3>¿Desea borrar este registro?</h3>
         </div>
-    }
+        <hr />
+        <h2>Detalle @ViewBag.name</h2>
+        <hr />
+        <div>
+            <div class="text-left">
+                @Html.ActionLink("Regresar a la lista", "Index", routeValues: null, htmlAttributes: new { @class = "btn bg-own-green-light" })
+                @Html.ActionLink("Ver resultados", "Results", new { id = id_ficha }, htmlAttributes: new { @class = "btn bg-own-blue" })
+            </div>
+            <div class="text-right">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Borrar" class="btn btn-danger" />
+                    </div>
+                }
+            </div>
+        </div>
+        <hr />
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Metodo)
+                </th>
+
+                <td class="text-capitalize">
+                    @Html.DisplayFor(model => model.Metodo)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Moneda)
+                </th>
+                <td class="text-capitalize">
+                    @Html.DisplayFor(model => model.Moneda)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValNominal)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.ValNominal)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValComercial)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.ValComercial)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AnosVida)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.AnosVida)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoAno)
+                </th>
+                <td class="text-capitalize">
+                    @Html.DisplayFor(model => model.TipoAno)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FrecPago)
+                </th>
+                <td class="text-capitalize">
+                    @Html.DisplayFor(model => model.FrecPago)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tea)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Tea)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tdea)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Tdea)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ianual)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Ianual)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ir)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Ir)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pprima)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pprima)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pestructuracion)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pestructuracion)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pcolocacion)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pcolocacion)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pflotacion)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pflotacion)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PCavali)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.PCavali)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PGracia)
+                </th>
+                <td>
+                    <ul>
+                        @foreach (var pg in (List<PGracia>)ViewBag.ListPG)
+                        {
+                            switch (pg.Tipo)
+                            {
+                                case "T":
+                                    <li class="text-left">Periodo @pg.Periodo: "Total"</li>
+
+                                    break;
+                                case "P":
+                                    <li class="text-left">Periodo @pg.Periodo: "Parcial"</li>
+
+                                    break;
+                                case "S":
+                                    <li class="text-left">Periodo @pg.Periodo: "Simple"</li>
+
+                                    break;
+                                default:
+                                    <li class="text-left">Periodo @pg.Periodo: "Simple"</li>
+
+                                    break;
+                            }
+                        }
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <div>
+            <div class="text-left">
+                @Html.ActionLink("Regresar a la lista", "Index", routeValues: null, htmlAttributes: new { @class = "btn bg-own-green-light" })
+                @Html.ActionLink("Ver resultados", "Results", new { id = id_ficha }, htmlAttributes: new { @class = "btn bg-own-blue" })
+            </div>
+            <div class="text-right">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Borrar" class="btn btn-danger" />
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
 </div>
+
+<!--BODY-->
+

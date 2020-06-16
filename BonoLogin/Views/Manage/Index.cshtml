@@ -3,6 +3,36 @@
     ViewBag.Title = "Administrar";
 }
 
+<!--BODY-->
+<div class="container w-100">
+    <div class="card text-center mt-5 p-3 shadow">
+        <h2>Administrar cuenta</h2>
+        <hr />
+        <dl class="dl-horizontal">
+            <p class="text-success">@ViewBag.StatusMessage</p>
+            <dt>Contraseña:</dt>
+            <dd>
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink("Cambiar la contraseña", "ChangePassword", routeValues: null, htmlAttributes: new { @class = "btn btn-danger own-hover" })
+                }
+                else
+                {
+                    @Html.ActionLink("Crear", "SetPassword", routeValues: null, htmlAttributes: new { @class = "btn btn-danger own-hover" })
+                }
+             </dd>
+        </dl>
+    </div>
+</div>
+
+<!--Espacio en blanco-->
+<div style="height: 50vh;"></div>
+<!--Fin Espacio en blanco-->
+<!--BODY-->
+
+
+@*
+    POR SI SE QUIERE USAR CUANOD EL PROYECTO ESCALE
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
@@ -23,22 +53,19 @@
             }
             ]
         </dd>
-        @*
-        <dt>Inicios de sesión externos:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Administrar", "ManageLogins") ]
-        </dd>
-          *@
-        @*
+                 <dt>Inicios de sesión externos:</dt>
+            <dd>
+                @Model.Logins.Count [
+                @Html.ActionLink("Administrar", "ManageLogins") ]
+            </dd>
+       
             Los números de teléfono se pueden usar como una segunda fase de comprobación en un sistema de autenticación en dos fases.
-             
+
              Consulte <a href="https://go.microsoft.com/fwlink/?LinkId=403804">este artículo</a>
                 para obtener detalles sobre cómo configurar esta aplicación ASP.NET para que sea compatible con la autenticación en dos fases mediante SMS.
-             
+
              Quite la marca de comentario del bloque siguiente después de configurar la autenticación en dos fases
-        *@
-        @*  
+       
             <dt>Número de teléfono:</dt>
             <dd>
                 @(Model.PhoneNumber ?? "None")
@@ -57,37 +84,36 @@
                     <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
                 }
             </dd>
-        *@
-        
-        @*
-        <dt>Autenticación de dos factores:</dt>
-        <dd>
-            <p>
-                No hay ningún proveedor de autenticación en dos fases configurado. Consulte <a href="https://go.microsoft.com/fwlink/?LinkId=403804">este artículo</a>
-                para obtener detalles sobre cómo configurar esta aplicación ASP.NET para que sea compatible con la autenticación en dos fases.
-            </p>
-            
-           
-            @if (Model.TwoFactor)
-                {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+      
+            <dt>Autenticación de dos factores:</dt>
+            <dd>
+                <p>
+                    No hay ningún proveedor de autenticación en dos fases configurado. Consulte <a href="https://go.microsoft.com/fwlink/?LinkId=403804">este artículo</a>
+                    para obtener detalles sobre cómo configurar esta aplicación ASP.NET para que sea compatible con la autenticación en dos fases.
+                </p>
+
+
+                @if (Model.TwoFactor)
                     {
-                        @Html.AntiForgeryToken()
-                        <text>Habilitado
-                        <input type="submit" value="Deshabilitar" class="btn btn-link" />
-                        </text>
+                        using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <text>Habilitado
+                            <input type="submit" value="Deshabilitar" class="btn btn-link" />
+                            </text>
+                        }
                     }
-                }
-                else
-                {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    else
                     {
-                        @Html.AntiForgeryToken()
-                        <text>Deshabilitada
-                        <input type="submit" value="Habilitar" class="btn btn-link" />
-                        </text>
+                        using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <text>Deshabilitada
+                            <input type="submit" value="Habilitar" class="btn btn-link" />
+                            </text>
+                        }
                     }
-                }
-        </dd>*@
+            </dd>
     </dl>
 </div>
+*@

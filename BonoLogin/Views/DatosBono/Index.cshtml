@@ -1,45 +1,60 @@
 ﻿@model IEnumerable<BonoLogin.Models.DatosBono>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Registros";
 }
 
-<h2>Index</h2>
+<!--BODY-->
+<div class="container w-100">
+    <div class="card text-center mt-5 p-3 shadow">
+        <h2>Registros</h2>
+        <hr />
+        <div class="text-right mb-3">
+            @Html.ActionLink("Nuevo registro","Create", "DatosBono", htmlAttributes: new { @class="btn btn-primary"})
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </th>
+                        <th></th>
+                        <th></th>
+                        @*<th></th>*@
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Detalles", "Details", new { id = item.Id })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Resultados", "Results", new { id = item.Id })
+                            </td>
+                            @*
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.Id })
+                            </td>
+                            *@
+                            <td>
+                                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Añadir nuevo registro", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th></th>
-        <th></th>
-        @*<th></th>*@
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Detalles", "Details", new { id = item.Id })
-        </td>
-        <td>
-            @Html.ActionLink("Resultados", "Results", new { id = item.Id })
-        </td>
-        @*
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id })
-            </td>
-        *@
-        <td>
-            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+<!--Espacio en blanco-->
+<div style="height: 50vh;"></div>
+<!--Fin Espacio en blanco-->
+<!--BODY-->

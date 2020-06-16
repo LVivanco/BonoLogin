@@ -7,177 +7,189 @@
     int id_ficha = (int)Model.Id;
 }
 
-<h2>Detalle @ViewBag.name</h2>
 
-<div>
-    <h4>DatosBono</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Metodo)
-        </dt>
+<!--BODY-->
+<div class="container w-100">
+    <div class="card text-center mt-5 p-3 shadow">
+        <h2>Detalle @ViewBag.name</h2>
+        <hr />
+        <div class="text-left">
+            @Html.ActionLink("Regresar a la lista", "Index" , routeValues: null, htmlAttributes: new { @class="btn bg-own-green-light"})
+            @Html.ActionLink("Ver resultados", "Results", new { id = id_ficha }, htmlAttributes: new { @class="btn bg-own-blue"})
+         </div>
+        <hr />
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Metodo)
+                </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.Metodo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Moneda)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Moneda)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ValNominal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ValNominal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ValComercial)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ValComercial)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnosVida)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnosVida)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TipoAno)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TipoAno)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FrecPago)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FrecPago)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tea)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tea)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tdea)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tdea)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ianual)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ianual)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ir)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ir)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pprima)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pprima)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pestructuracion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pestructuracion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pcolocacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pcolocacion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pflotacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pflotacion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PCavali)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PCavali)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PGracia)
-        </dt>
-
-        <dd>
-            <ul>
-                @foreach (var pg in (List<PGracia>)ViewBag.ListPG)
-                {
-                    switch (pg.Tipo)
-                    {
-                        case "T":
-                            <li>Periodo @pg.Periodo: "Total"</li>
-                            @Html.ActionLink("Editar", "EditPG", new { id = pg.Id })
-                            break;
-                        case "P":
-                            <li>Periodo @pg.Periodo: "Parcial"</li>
-                            @Html.ActionLink("Editar", "EditPG", new { id = pg.Id })
-                            break;
-                        case "S":
-                            <li>Periodo @pg.Periodo: "Simple"</li>
-                            @Html.ActionLink("Editar", "EditPG", new { id = pg.Id })
-                            break;
-                        default:
-                            <li>Periodo @pg.Periodo: "Simple"</li>
-                            @Html.ActionLink("Editar", "EditPG", new { id = pg.Id })
-                            break;
-                    }
-                    @*@Html.ActionLink("Update", "EditPGOne", new { id = pg.Id});*@
-                }
-            </ul>
-            @*@Html.ActionLink("Edit PG","EditPG", new { id = Model.Id});*@
-        </dd>
-    </dl>
+                <td class="text-capitalize">
+                    @Html.DisplayFor(model => model.Metodo)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Moneda)
+                </th>
+                <td class="text-capitalize">
+                    @Html.DisplayFor(model => model.Moneda)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValNominal)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.ValNominal)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValComercial)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.ValComercial)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AnosVida)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.AnosVida)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoAno)
+                </th>
+                <td class="text-capitalize">
+                    @Html.DisplayFor(model => model.TipoAno)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FrecPago)
+                </th>
+                <td class="text-capitalize">
+                    @Html.DisplayFor(model => model.FrecPago)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tea)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Tea)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tdea)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Tdea)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ianual)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Ianual)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ir)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Ir)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pprima)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pprima)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pestructuracion)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pestructuracion)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pcolocacion)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pcolocacion)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pflotacion)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pflotacion)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PCavali)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.PCavali)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PGracia)
+                </th>
+                <td>
+                    <ul>
+                        @foreach (var pg in (List<PGracia>)ViewBag.ListPG)
+                        {
+                            switch (pg.Tipo)
+                            {
+                                case "T":
+                                    <li class="text-left">Periodo @pg.Periodo: "Total"</li>
+                                    @Html.ActionLink("Editar", "EditPG", new { id = pg.Id })
+                                    break;
+                                case "P":
+                                    <li class="text-left">Periodo @pg.Periodo: "Parcial"</li>
+                                    @Html.ActionLink("Editar", "EditPG", new { id = pg.Id })
+                                    break;
+                                case "S":
+                                    <li class="text-left">Periodo @pg.Periodo: "Simple"</li>
+                                    @Html.ActionLink("Editar", "EditPG", new { id = pg.Id })
+                                    break;
+                                default:
+                                    <li class="text-left">Periodo @pg.Periodo: "Simple"</li>
+                                    @Html.ActionLink("Editar", "EditPG", new { id = pg.Id })
+                                    break;
+                            }
+                            @*@Html.ActionLink("Update", "EditPGOne", new { id = pg.Id});*@
+                        }
+                        @*@Html.ActionLink("Edit PG","EditPG", new { id = Model.Id});*@
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <div class="text-left">
+            @* @Html.ActionLink("Editar", "Edit", new { id = Model.Id })*@
+            @Html.ActionLink("Regresar a la lista", "Index", routeValues: null, htmlAttributes: new { @class = "btn bg-own-green-light" })
+            @Html.ActionLink("Ver resultados", "Results", new { id = id_ficha }, htmlAttributes: new { @class = "btn bg-own-blue" })
+        </div>
+    </div>
 </div>
 
-<p>
-   @* @Html.ActionLink("Editar", "Edit", new { id = Model.Id })*@
-    @Html.ActionLink("Ver resultados","Results", new { id = id_ficha})
-    @Html.ActionLink("Regresar a la lista", "Index")
-</p>
+<!--BODY-->
+

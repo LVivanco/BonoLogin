@@ -183,6 +183,7 @@ namespace BonoLogin.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ListPG = service.ListPGracia(datosBono.Id);
             return View(datosBono);
         }
 

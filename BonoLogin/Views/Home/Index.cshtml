@@ -6,71 +6,60 @@
 
 @if (!Request.IsAuthenticated)
 {
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4">
-                <h1>
-                    Calculo de Bonos
-                    <i style="font-size: 25rem; color: green;" class="fas fa-money-bill-wave"></i>
-                </h1>
-            </div>
-            <div class="col-md-8">
-                <section id="loginForm">
-                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <h4>Inicie sesíon:</h4>
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <div class="checkbox">
-                                    @Html.CheckBoxFor(m => m.RememberMe)
-                                    @Html.LabelFor(m => m.RememberMe)
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Iniciar sesión" class="btn btn-default" />
-                            </div>
-                        </div>
-                        <p>
-                            @Html.ActionLink("Registrarse como usuario nuevo", "Register","Account")
-                        </p>
-                        @* Habilite esta opción una vez tenga la confirmación de la cuenta habilitada para la funcionalidad de restablecimiento de contraseña
-                            <p>
-                                @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
-                         </p>*@
-                    }
-                </section>
-            </div>
+    <!---------RENDER BODY----------->
+    <div class="container w-100 d-flex justify-content-center">
+        <div class="card text-center mt-5 p-3 shadow">
+            <h4><i class="fas fa-money-bill"></i> Calculo de Bono</h4>
+            <hr />
+            <section id="LoginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "p-4", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4>Iniciar sesíon:</h4>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        <small id="emailHelp" class="form-text text-muted">
+                            No compartiremos tu email, tus datos son
+                            privados
+                        </small>
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group form-check">
+                        @Html.CheckBoxFor(m => m.RememberMe, htmlAttributes: new { @class = "form-check-input" })
+                        @Html.LabelFor(m => m.RememberMe, htmlAttributes: new { @class = "form-check-label" })
+                    </div>
+                    <input type="submit" value="Iniciar sesión" class="btn bg-own-green-dark" />
+                    @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn bg-own-blue" })
+                }
+            </section>
         </div>
     </div>
+    <!-----FIN DE RENDER BODY------->
+    <!--BODY-->
 }
-else {
-    <div class="row">
-        <div class="col-md-4">
-            <h1>
-                Calculo de Bonos
-                <i style="font-size: 25rem; color: green;" class="fas fa-money-bill-wave"></i>
-            </h1>
+else
+{
+    <!--BODY-->
+    <div class="container w-100">
+        <div class="card text-center mt-5 p-3 shadow">
+            <h2>Bienvenido CORREO</h2>
+            <hr />
+            @Html.ActionLink("Ir a mis resgistros", "Index", "DatosBono", routeValues: null ,htmlAttributes: new { @class = "btn own-hover" })
+            @Html.ActionLink("Ver instrucciones", "About", "Home",  routeValues: null, htmlAttributes: new { @class = "btn own-hover" })
         </div>
     </div>
+
+    <!--Espacio en blanco-->
+    <div style="height: 50vh;"></div>
+    <!--Fin Espacio en blanco-->
+    <!--BODY-->
 }
 
 @section Scripts {

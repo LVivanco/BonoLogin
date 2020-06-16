@@ -10,48 +10,66 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body class="pt-0">
-     <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Bono", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        @if (Request.IsAuthenticated)
-                        {
-                            <li>@Html.ActionLink("Inicio", "Index", "DatosBono")</li>
-                        }
-                        else
-                        {
-                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                        }
-                        <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                        <li>@Html.ActionLink("Equipo", "Contact", "Home")</li>
-                        @if (Request.IsAuthenticated)
-                        {
-                            <li>@Html.ActionLink("Bonos", "Index", "DatosBono")</li>
-                        }
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
-            </div>
+<body class="bg-own-grad-green pt-10">
+
+    <!--NAVBAR-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-own-white fixed-top">
+        <a class="navbar-brand" href="#"><i class="fas fa-file-invoice-dollar"></i> Bono</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="fas fa-money-bill-wave font-weight-bold text-dark"></i></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item own-hover">
+                      @Html.ActionLink("Inicio", "Index", "Home", routeValues: null ,htmlAttributes: new { @class = "nav-link" })
+                </li>
+                <li class="nav-item own-hover">
+                    @Html.ActionLink("Acerca de", "About", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" })
+                </li>
+                <li class="nav-item own-hover">
+                    @Html.ActionLink("Equipo", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" })
+                </li>
+                @if (Request.IsAuthenticated) {
+                    <li class="nav-item own-hover">
+                        @Html.ActionLink("Registros", "Index", "DatosBono", routeValues: null, htmlAttributes: new { @class = "nav-link" })
+                    </li>
+                }
+            </ul>
+            @Html.Partial("_LoginPartial")
         </div>
-    <div class="container body-content">
+    </nav>
+    <!--NAVBAR-->
+
+
+    <div class="container-fluid">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Calculo de Bonos</p>
-        </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <!--FOOTER-->
+    <footer class="text-white bg-own-gray">
+        <div class="row m-0">
+            <div class="col d-flex justify-content-center align-items-center">
+                <p class="m-0">&copy; 2020 - Calculo de Bonos</p>
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+                @Html.ActionLink("Instruccines de uso", "About", "Home", routeValues: null, htmlAttributes: new { @class="text-white" })
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+                <a class="text-white text-center" href="#">
+                    <i class="fab fa-github mt-4 h3"></i>
+                    <p>GitHub!</p>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!--FOOTER-->
+
+
 </body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
 </html>
