@@ -12,10 +12,10 @@ namespace BonoLogin.Models
         [Display(Name = "Valor actual")]
         public double Va { get; set; }
         [Required]
-        [Display(Name = "TCEA")]
+        [Display(Name = "TCEA %")]
         public double Tcea { get; set; }
         [Required]
-        [Display(Name = "TIR")]
+        [Display(Name = "TIR %")]
         public double Tir { get; set; }
 
         [Display(Name = "Bono")]

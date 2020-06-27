@@ -65,6 +65,7 @@ namespace BonoLogin.Models
 
         public virtual ApplicationUser User { get; set; }
 
+        [Display(Name = "Plazos de gracia")]
         public virtual ICollection<PGracia> PGracia { get; set; }
 
     }

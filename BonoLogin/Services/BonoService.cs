@@ -30,6 +30,10 @@ namespace BonoLogin.Services
             return list;
         }
 
+        public double nDecimals(double number, int d) {
+            return Math.Round(number, d);
+        }
+
         public ResultadoBono GetResultado(int ficha_id) {
             ResultadoBono rb = null;
             using (var db = new ApplicationDbContext()) {
@@ -140,10 +144,10 @@ namespace BonoLogin.Services
             //Añadiremos porsiacaso se quiera acceder a los resultados
 
             //Resultados
-            double vaBonista = calculo.ValorActual(flujoBonista.ToArray(), tedp, numeroPeriodos);
-            double vanBonista = calculo.VANeto(flujoBonista.ToArray(), vaBonista);
-            double tirBonista = calculo.Tir(flujoBonista.ToArray()) * 100;
-            double tceaBonista = calculo.Tcea(tirBonista/100, diasXAnio, diasXPeriodo) * 100;
+            double vaBonista = nDecimals(calculo.ValorActual(flujoBonista.ToArray(), tedp, numeroPeriodos),2);
+            double vanBonista = nDecimals(calculo.VANeto(flujoBonista.ToArray(), vaBonista),2);
+            double tirBonista = nDecimals(calculo.Tir(flujoBonista.ToArray()) * 100, 6);
+            double tceaBonista = nDecimals(calculo.Tcea(tirBonista/100, diasXAnio, diasXPeriodo) * 100,6);
 
             //Cadenas de flujos
             string cadenaBono = listToString(listStringsTwoDecimals(bono));
