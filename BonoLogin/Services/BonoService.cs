@@ -148,6 +148,8 @@ namespace BonoLogin.Services
             double vanBonista = nDecimals(calculo.VANeto(flujoBonista.ToArray(), vaBonista),2);
             double tirBonista = nDecimals(calculo.Tir(flujoBonista.ToArray()) * 100, 6);
             double tceaBonista = nDecimals(calculo.Tcea(tirBonista/100, diasXAnio, diasXPeriodo) * 100,6);
+            double tirEmisor = nDecimals(calculo.Tir(flujoEmisor.ToArray()) * 100, 6);
+            double tceaEmisor = nDecimals(calculo.Tcea(tirEmisor / 100, diasXAnio, diasXPeriodo) * 100, 6);
 
             //Cadenas de flujos
             string cadenaBono = listToString(listStringsTwoDecimals(bono));
@@ -167,8 +169,10 @@ namespace BonoLogin.Services
                 resultBono = new ResultadoBono()
                 {
                     DatosBonoId = id_ficha,
-                    Tir = tirBonista,
-                    Tcea = tceaBonista,
+                    TirBonista = tirBonista,
+                    TceaBonista = tceaBonista,
+                    TirEmisor = tirEmisor,
+                    TceaEmisor = tceaEmisor,
                     Va = vaBonista,
                     Van = vanBonista,
                     Bono = cadenaBono,
@@ -196,8 +200,10 @@ namespace BonoLogin.Services
                     resultBono = db.ResultadoBono.Where(res => res.DatosBonoId == id_ficha).First();
                     resultBono.Va = vaBonista;
                     resultBono.Van = vanBonista;
-                    resultBono.Tir = tirBonista;
-                    resultBono.Tcea = tceaBonista;
+                    resultBono.TirBonista = tirBonista;
+                    resultBono.TceaBonista = tceaBonista;
+                    resultBono.TirEmisor = tirEmisor;
+                    resultBono.TceaEmisor = tceaEmisor;
                     resultBono.Bono = cadenaBono;
                     resultBono.BonoIndexado = cadenaBonoIndexado;
                     resultBono.Cupon = cadenaCupon;

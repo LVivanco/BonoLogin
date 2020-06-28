@@ -12,11 +12,17 @@ namespace BonoLogin.Models
         [Display(Name = "Valor actual")]
         public double Va { get; set; }
         [Required]
-        [Display(Name = "TCEA %")]
-        public double Tcea { get; set; }
+        [Display(Name = "TCEA Bonista %")]
+        public double TceaBonista { get; set; }
         [Required]
-        [Display(Name = "TIR %")]
-        public double Tir { get; set; }
+        [Display(Name = "TIR Bonista %")]
+        public double TirBonista { get; set; }
+        [Required]
+        [Display(Name = "TCEA Emisor %")]
+        public double TceaEmisor { get; set; }
+        [Required]
+        [Display(Name = "TIR Emisor %")]
+        public double TirEmisor { get; set; }
 
         [Display(Name = "Bono")]
         public string Bono { get; set; }
