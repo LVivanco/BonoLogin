@@ -1,5 +1,5 @@
 # BonoLogin
-Probando con el admin de usuarios de asp.net
+Admin de usuarios de asp.net
 
 Proyecto completo v1.0
  
