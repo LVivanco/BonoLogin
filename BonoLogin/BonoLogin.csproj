@@ -221,6 +221,26 @@
     <Compile Include="Migrations\202006281753398_deploymigration.Designer.cs">
       <DependentUpon>202006281753398_deploymigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006290207349_dates.cs" />
+    <Compile Include="Migrations\202006290207349_dates.Designer.cs">
+      <DependentUpon>202006290207349_dates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006290210087_dates2je.cs" />
+    <Compile Include="Migrations\202006290210087_dates2je.Designer.cs">
+      <DependentUpon>202006290210087_dates2je.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006290229344_dates3Je.cs" />
+    <Compile Include="Migrations\202006290229344_dates3Je.Designer.cs">
+      <DependentUpon>202006290229344_dates3Je.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006290304247_dates4je.cs" />
+    <Compile Include="Migrations\202006290304247_dates4je.Designer.cs">
+      <DependentUpon>202006290304247_dates4je.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006290405279_deploydetails.cs" />
+    <Compile Include="Migrations\202006290405279_deploydetails.Designer.cs">
+      <DependentUpon>202006290405279_deploydetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DatosBono.cs" />
@@ -438,6 +458,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006281753398_deploymigration.resx">
       <DependentUpon>202006281753398_deploymigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006290207349_dates.resx">
+      <DependentUpon>202006290207349_dates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006290210087_dates2je.resx">
+      <DependentUpon>202006290210087_dates2je.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006290229344_dates3Je.resx">
+      <DependentUpon>202006290229344_dates3Je.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006290304247_dates4je.resx">
+      <DependentUpon>202006290304247_dates4je.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006290405279_deploydetails.resx">
+      <DependentUpon>202006290405279_deploydetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -41,7 +41,7 @@ namespace BonoLogin.Services
             }
             return rb;
         }
-          
+
         public void CreateResult(int id_ficha, bool createOrEdit) {
             DatosBono datosBono = null;
             List<PGracia> lstPGracia = null;
@@ -72,6 +72,7 @@ namespace BonoLogin.Services
             List<double> flujoEmisor = new List<double>();
             List<double> flujoEmisorEscudo = new List<double>();
             List<double> flujoBonista = new List<double>();
+            List<DateTime> flujoFechas = new List<DateTime>();
             //Objetos a añadir a los flujos
             double eBono = 0.0;
             double eBonoIndexado = 0.0;
@@ -84,6 +85,8 @@ namespace BonoLogin.Services
             double eFEmisorEscudo = 0.0;
             double eFBonista = 0.0;
             //Primer flujo 0
+            flujoFechas.Add(datosBono.fechaEmision);
+
             bono.Add(eBono);
             bonoIndexado.Add(eBonoIndexado);
             cupon.Add(eCupon);
@@ -101,6 +104,9 @@ namespace BonoLogin.Services
 
             //Flujo
             for (int i = 1; i <= numeroPeriodos; i++) {
+
+                flujoFechas.Add(flujoFechas[i - 1].AddDays(diasXPeriodo));
+
                 if (i - 2 < 0) {
                     eBono = calculo.Bono(i, datosBono.ValNominal, numeroPeriodos, "S", bonoIndexado[i - 1], cupon[i - 1], amortizacion[i - 1]);
                     bono.Add(eBono);
@@ -109,23 +115,23 @@ namespace BonoLogin.Services
                     eBono = calculo.Bono(i, datosBono.ValNominal, numeroPeriodos, lstPGracia[i - 2].Tipo, bonoIndexado[i - 1], cupon[i - 1], amortizacion[i - 1]);
                     bono.Add(eBono);
                 }
-               
+
                 eBonoIndexado = calculo.BonoIndexado(bono[i], ip);
                 bonoIndexado.Add(eBonoIndexado);
                 eCupon = calculo.Cupon(tep, bonoIndexado[i]);
                 cupon.Add(eCupon);
                 if (datosBono.Metodo == "aleman" || datosBono.Metodo == "americano")
                 {
-                    eAmortizacion = calculo.Amortizacion(i, numeroPeriodos, lstPGracia[i-1].Tipo, bonoIndexado[i], datosBono.Metodo, 0, cupon[i]);
+                    eAmortizacion = calculo.Amortizacion(i, numeroPeriodos, lstPGracia[i - 1].Tipo, bonoIndexado[i], datosBono.Metodo, 0, cupon[i]);
                     amortizacion.Add(eAmortizacion);
-                    eCuota = calculo.Cuota(i, numeroPeriodos, lstPGracia[i-1].Tipo, cupon[i], amortizacion[i], datosBono.Metodo, datosBono.ValNominal, tep);
+                    eCuota = calculo.Cuota(i, numeroPeriodos, lstPGracia[i - 1].Tipo, cupon[i], amortizacion[i], datosBono.Metodo, datosBono.ValNominal, tep);
                     cuota.Add(eCuota);
                 }
                 else
                 {
-                    eCuota = calculo.Cuota(i, numeroPeriodos, lstPGracia[i-1].Tipo, cupon[i], 0, datosBono.Metodo, datosBono.ValNominal, tep);
+                    eCuota = calculo.Cuota(i, numeroPeriodos, lstPGracia[i - 1].Tipo, cupon[i], 0, datosBono.Metodo, datosBono.ValNominal, tep);
                     cuota.Add(eCuota);
-                    eAmortizacion = calculo.Amortizacion(i, numeroPeriodos, lstPGracia[i-1].Tipo, bonoIndexado[i], datosBono.Metodo, cuota[i], cupon[i]);
+                    eAmortizacion = calculo.Amortizacion(i, numeroPeriodos, lstPGracia[i - 1].Tipo, bonoIndexado[i], datosBono.Metodo, cuota[i], cupon[i]);
                     amortizacion.Add(eAmortizacion);
                 }
                 ePrima = calculo.Prima(i, numeroPeriodos, datosBono.Pprima / 100, bonoIndexado[i]);
@@ -141,15 +147,22 @@ namespace BonoLogin.Services
                 eFBonista = calculo.FlujoBonista(i, datosBono.ValComercial, cib, flujoEmisor[i]);
                 flujoBonista.Add(eFBonista);
             }
+
+            //Las fechas se pasan a una lista de strings
+            List<string> listaFlujoFechas = new List<string>();
+            foreach (var x in flujoFechas) {
+                listaFlujoFechas.Add(x.ToShortDateString());
+            }
+
             //Añadiremos porsiacaso se quiera acceder a los resultados
 
             //Resultados
             double vaBonista = nDecimals(calculo.ValorActual(flujoBonista.ToArray(), tedp, numeroPeriodos),2);
             double vanBonista = nDecimals(calculo.VANeto(flujoBonista.ToArray(), vaBonista),2);
-            double tirBonista = nDecimals(calculo.Tir(flujoBonista.ToArray()) * 100, 6);
-            double tceaBonista = nDecimals(calculo.Tcea(tirBonista/100, diasXAnio, diasXPeriodo) * 100,6);
-            double tirEmisor = nDecimals(calculo.Tir(flujoEmisor.ToArray()) * 100, 6);
-            double tceaEmisor = nDecimals(calculo.Tcea(tirEmisor / 100, diasXAnio, diasXPeriodo) * 100, 6);
+            double tirBonista = nDecimals(calculo.Tir(flujoBonista.ToArray()) * 100, 7);
+            double tceaBonista = nDecimals(calculo.Tcea(tirBonista/100, diasXAnio, diasXPeriodo) * 100,7);
+            double tirEmisor = nDecimals(calculo.Tir(flujoEmisor.ToArray()) * 100, 7);
+            double tceaEmisor = nDecimals(calculo.Tcea(tirEmisor / 100, diasXAnio, diasXPeriodo) * 100, 7);
 
             //Cadenas de flujos
             string cadenaBono = listToString(listStringsTwoDecimals(bono));
@@ -162,6 +175,7 @@ namespace BonoLogin.Services
             string cadenaFlujoEmisor = listToString(listStringsTwoDecimals(flujoEmisor));
             string cadenaFlujoEmisorEscudo = listToString(listStringsTwoDecimals(flujoEmisorEscudo));
             string cadenaBonista = listToString(listStringsTwoDecimals(flujoBonista));
+            string cadenaFlujoFechas = listToString(listaFlujoFechas);
 
             if (createOrEdit)
             {
@@ -185,6 +199,8 @@ namespace BonoLogin.Services
                     FlujoEmisor = cadenaFlujoEmisor,
                     FlujoEmisorEsc = cadenaFlujoEmisorEscudo,
                     FlujoBonista = cadenaBonista,
+                    FlujoFechas = cadenaFlujoFechas,
+                    Ip = ip,
                 };
                 using (var db = new ApplicationDbContext())
                 {
@@ -214,6 +230,8 @@ namespace BonoLogin.Services
                     resultBono.FlujoEmisor = cadenaFlujoEmisor;
                     resultBono.FlujoEmisorEsc = cadenaFlujoEmisorEscudo;
                     resultBono.FlujoBonista = cadenaBonista;
+                    resultBono.FlujoFechas = cadenaFlujoFechas;
+                    resultBono.Ip = ip;
                     db.SaveChanges();
 
                 }

@@ -12,7 +12,7 @@ namespace BonoLogin.Models
         [Display(Name = "Valor actual")]
         public double Va { get; set; }
         [Required]
-        [Display(Name = "TCEA Bonista %")]
+        [Display(Name = "TREA Bonista %")]
         public double TceaBonista { get; set; }
         [Required]
         [Display(Name = "TIR Bonista %")]
@@ -52,6 +52,11 @@ namespace BonoLogin.Models
         [Display(Name = "Flujo Bonista")]
         public string FlujoBonista { get; set; }
 
+        [Display(Name = "Fechas")]
+        public string FlujoFechas { get; set; }
+
+        [Display(Name = "Inflación por periodo")]
+        public double Ip { get; set; }
         public int DatosBonoId { get; set; }
         public virtual DatosBono DatosBono { get; set; }
 

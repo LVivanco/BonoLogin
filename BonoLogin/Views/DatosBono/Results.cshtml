@@ -11,7 +11,7 @@
         <h2>Resultados de @ViewBag.Nombre</h2>
         <hr />
         <div class="text-left mb-4">
-            @Html.ActionLink("Regresar a la lista:", "Index", routeValues: null, htmlAttributes: new { @class="btn bg-own-blue" })
+            @Html.ActionLink("Regresar a la lista:", "Index", routeValues: null, htmlAttributes: new { @class = "btn bg-own-blue" })
         </div>
         <table class="table table-hover">
             <tr>
@@ -34,6 +34,24 @@
 
             <tr>
                 <th>
+                    @Html.DisplayName("Fecha de emisión:")
+                </th>
+                <td>
+                    @ViewBag.FechaEmision
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ip)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Ip)
+                </td>
+            </tr>
+
+            <tr>
+                <th>
                     @Html.DisplayNameFor(model => model.Van)
                 </th>
                 <td>
@@ -49,14 +67,6 @@
                     @Html.DisplayFor(model => model.Va)
                 </td>
             </tr>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.TceaBonista)
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.TceaBonista)
-                </td>
-            </tr>
 
             <tr>
                 <th>
@@ -69,10 +79,10 @@
 
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.TceaEmisor)
+                    @Html.DisplayNameFor(model => model.TceaBonista)
                 </th>
                 <td>
-                    @Html.DisplayFor(model => model.TceaEmisor)
+                    @Html.DisplayFor(model => model.TceaBonista)
                 </td>
             </tr>
 
@@ -84,6 +94,17 @@
                     @Html.DisplayFor(model => model.TirEmisor)
                 </td>
             </tr>
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TceaEmisor)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.TceaEmisor)
+                </td>
+            </tr>
+
+
         </table>
         <hr />
         <h4 class="text-left">Flujo: </h4>
@@ -91,6 +112,7 @@
             <table class="table table-hover">
                 <thead class="thead-dark">
                     <tr>
+                        <th>#</th>
                         <th>Periodo</th>
                         <th>Bono</th>
                         <th>Bono Indexado</th>
@@ -110,6 +132,9 @@
                         <tr>
                             <td>
                                 @i
+                            </td>
+                            <td>
+                                @Model.FlujoFechas.Split('|').ToList()[i]
                             </td>
                             <td>
                                 @Model.Bono.Split('|').ToList()[i]

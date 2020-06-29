@@ -64,6 +64,7 @@ namespace BonoLogin.Controllers
             }
             ViewBag.Nombre = datosBono.Nombre;
             ViewBag.Moneda = datosBono.Moneda;
+            ViewBag.FechaEmision = datosBono.fechaEmision.ToShortDateString();
             return View(resultBono);
         }
 
@@ -83,7 +84,7 @@ namespace BonoLogin.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Moneda,Metodo,ValNominal,ValComercial,AnosVida,TipoAno,FrecPago,Tea,Tdea,Ianual,Ir,Pprima,Pestructuracion,Pcolocacion,Pflotacion,PCavali,UserId")] DatosBono datosBono)
+        public ActionResult Create([Bind(Include = "Id,Nombre,Moneda,Metodo,ValNominal,ValComercial,AnosVida,TipoAno,FrecPago,Tea,Tdea,Ianual,Ir,Pprima,Pestructuracion,Pcolocacion,Pflotacion,PCavali,fechaEmision,UserId")] DatosBono datosBono)
         {
             datosBono.UserId = User.Identity.GetUserId();
             int numPeriodos = calculo.NumeroPeriodos(datosBono.TipoAno,datosBono.FrecPago,datosBono.AnosVida);

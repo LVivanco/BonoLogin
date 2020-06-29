@@ -61,6 +61,10 @@ namespace BonoLogin.Models
         [Required]
         [Display(Name = "Cavali %")]
         public double PCavali { get; set;}
+        
+        [Required]
+        [Display(Name = "Fecha de emisión")]
+        public DateTime fechaEmision { get; set;}
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
