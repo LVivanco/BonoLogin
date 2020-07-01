@@ -57,6 +57,12 @@ namespace BonoLogin.Models
 
         [Display(Name = "Inflación por periodo")]
         public double Ip { get; set; }
+
+        [Display(Name = "Tasa del Periodo")]
+        public double Tep { get; set; }
+
+        [Display(Name = "Cok del Periodo")]
+        public double Tdep { get; set; }
         public int DatosBonoId { get; set; }
         public virtual DatosBono DatosBono { get; set; }
 

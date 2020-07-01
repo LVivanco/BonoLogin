@@ -22,8 +22,8 @@ namespace BonoLogin.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
+            
             /*
-
             var passWordHash = new PasswordHasher();
             string pass = passWordHash.HashPassword("admin1234");
 
@@ -35,17 +35,14 @@ namespace BonoLogin.Migrations
                 PasswordHash = pass,
                 SecurityStamp = Guid.NewGuid().ToString(),
             });
-
+            */
 
             //asignando rol a emisor admin
-
+            /*
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             var userId = userManager.FindByEmail("emisor@admin.com").Id;
-            var resultado = roleManager.Create(new IdentityRole("Emisor"));
-            if (userId != null) {
-                resultado = userManager.AddToRole(userId, "Emisor");
-            }
+            
 
             context.DatosEmisor.AddOrUpdate(de => de.Alias, new DatosEmisor() { 
               Alias = "Default",

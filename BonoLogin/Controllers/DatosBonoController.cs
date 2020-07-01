@@ -69,9 +69,9 @@ namespace BonoLogin.Controllers
         }
 
         // GET: DatosBono/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            /*
+            
             DatosEmisor datosEmisor = db.DatosEmisor.Find(id);
 
             ViewBag.IAnual = datosEmisor.Ianual;
@@ -80,7 +80,7 @@ namespace BonoLogin.Controllers
             ViewBag.Pcavali = datosEmisor.PCavali;
             ViewBag.Pcolocacion = datosEmisor.Pcolocacion;
             ViewBag.Pflotacion = datosEmisor.Pflotacion;
-            ViewBag.Pprima = datosEmisor.Pprima;*/
+            ViewBag.Pprima = datosEmisor.Pprima;
 
             ViewBag.Metodos = service.Metodos();
             ViewBag.TipoAnios = service.TipoAnios();
@@ -224,7 +224,7 @@ namespace BonoLogin.Controllers
             return View("Details");
         }
 
-        /*
+        
         public ActionResult Type(){
             ViewBag.Types = service.TiposPorcentajes();
             return View();
@@ -236,6 +236,6 @@ namespace BonoLogin.Controllers
             string x = form["Alias"];
             int i = Int32.Parse(x);
             return RedirectToAction("Create", routeValues: new { id = i} ) ;
-        }*/
+        }
     }
 }

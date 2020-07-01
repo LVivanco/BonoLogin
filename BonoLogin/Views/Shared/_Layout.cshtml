@@ -33,12 +33,16 @@
                     @Html.ActionLink("Equipo", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" })
                 </li>
                 @if (Request.IsAuthenticated) {
+                    
+                    if (User.IsInRole("Emisor"))
+                    {
+                    <li class="nav-item own-hover">
+                        @Html.ActionLink("Administrar", "Index", "DatosEmisor", routeValues: null, htmlAttributes: new { @class = "nav-link" })
+                    </li>
+                    }
+                    else { 
                     <li class="nav-item own-hover">
                         @Html.ActionLink("Registros", "Index", "DatosBono", routeValues: null, htmlAttributes: new { @class = "nav-link" })
-                    </li>
-                    if (User.IsInRole("Emisor")) { 
-                    <li class="nav-item own-hover">
-                        @Html.ActionLink("Administrar","Index","DatosEmisor",routeValues: null, htmlAttributes: new { @class = "nav-link"})
                     </li>
                     }
                 }
