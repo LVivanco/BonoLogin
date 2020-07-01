@@ -22,6 +22,8 @@ namespace BonoLogin.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
+            /*
+
             var passWordHash = new PasswordHasher();
             string pass = passWordHash.HashPassword("admin1234");
 
@@ -71,7 +73,7 @@ namespace BonoLogin.Migrations
             });
 
             context.SaveChanges();
-
+            */
             
         }
     }
