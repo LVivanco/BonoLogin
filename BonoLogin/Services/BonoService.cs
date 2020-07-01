@@ -435,5 +435,29 @@ namespace BonoLogin.Services
             return lst;
         }
 
+        public List<SelectListItem> TiposPorcentajes() {
+            List<SelectListItem> lst = new List<SelectListItem>();
+            List<DatosEmisor> lst_de = new List<DatosEmisor>();
+            ApplicationUser userAdmin = null;
+            string idAdmin;
+            using (var db = new ApplicationDbContext()) {
+                userAdmin = db.Users.Where(u => u.Email == "emisor@admin.com").First();
+                idAdmin = userAdmin.Id;
+                lst_de = db.DatosEmisor.Where(de => de.UserId == idAdmin).ToList();
+            
+            }
+
+            foreach (var item in lst_de) {
+                SelectListItem temp = new SelectListItem()
+                {
+                    Text = item.Alias,
+                    Value = item.Id.ToString(),
+                };
+                lst.Add(temp);
+            }
+
+            return lst;
+        }
+
     }
 }

@@ -17,7 +17,7 @@ namespace BonoLogin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private BonoService service = new BonoService();
         private CalculoBono calculo = new CalculoBono();
-       
+
         // GET: DatosBono
         public ActionResult Index()
         {
@@ -69,8 +69,18 @@ namespace BonoLogin.Controllers
         }
 
         // GET: DatosBono/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            DatosEmisor datosEmisor = db.DatosEmisor.Find(id);
+
+            ViewBag.IAnual = datosEmisor.Ianual;
+            ViewBag.Ir = datosEmisor.Ir;
+            ViewBag.Pestructuracion = datosEmisor.Pestructuracion;
+            ViewBag.Pcavali = datosEmisor.PCavali;
+            ViewBag.Pcolocacion = datosEmisor.Pcolocacion;
+            ViewBag.Pflotacion = datosEmisor.Pflotacion;
+            ViewBag.Pprima = datosEmisor.Pprima;
+
             ViewBag.Metodos = service.Metodos();
             ViewBag.TipoAnios = service.TipoAnios();
             ViewBag.Frecuencias = service.Frecuencias();
@@ -87,16 +97,16 @@ namespace BonoLogin.Controllers
         public ActionResult Create([Bind(Include = "Id,Nombre,Moneda,Metodo,ValNominal,ValComercial,AnosVida,TipoAno,FrecPago,Tea,Tdea,Ianual,Ir,Pprima,Pestructuracion,Pcolocacion,Pflotacion,PCavali,fechaEmision,UserId")] DatosBono datosBono)
         {
             datosBono.UserId = User.Identity.GetUserId();
-            int numPeriodos = calculo.NumeroPeriodos(datosBono.TipoAno,datosBono.FrecPago,datosBono.AnosVida);
+            int numPeriodos = calculo.NumeroPeriodos(datosBono.TipoAno, datosBono.FrecPago, datosBono.AnosVida);
             if (ModelState.IsValid)
             {
                 db.DatosBono.Add(datosBono);
                 db.SaveChanges();
                 service.CreatePG(datosBono.Id, numPeriodos);
-                service.CreateResult(datosBono.Id,true);
+                service.CreateResult(datosBono.Id, true);
                 return RedirectToAction("Index");
             }
-           return View(datosBono);
+            return View(datosBono);
         }
 
         // GET: DatosBono/Edit/5
@@ -135,7 +145,7 @@ namespace BonoLogin.Controllers
                 db.SaveChanges();
                 service.DeletePG(datosBono.Id);
                 service.CreatePG(datosBono.Id, numPeriodos);
-                return RedirectToAction("Details",new { id = datosBono.Id});
+                return RedirectToAction("Details", new { id = datosBono.Id });
             }
             return View(datosBono);
         }
@@ -163,9 +173,9 @@ namespace BonoLogin.Controllers
             int idCurrentFicha = periodoGracia.DatosBonoId;
             if (ModelState.IsValid)
             {
-                service.EditPG(periodoGracia.Id,periodoGracia.Tipo);
+                service.EditPG(periodoGracia.Id, periodoGracia.Tipo);
                 service.CreateResult(idCurrentFicha, false);
-                return RedirectToAction("Details", new { id = idCurrentFicha});
+                return RedirectToAction("Details", new { id = idCurrentFicha });
             }
             ViewBag.TiposPg = service.TiposPG();
             return View(periodoGracia);
@@ -213,7 +223,17 @@ namespace BonoLogin.Controllers
             return View("Details");
         }
 
-        /*Vista de Resultados*/
+        public ActionResult Type(){
+            ViewBag.Types = service.TiposPorcentajes();
+            return View();
+        }
 
-     }
+        [HttpPost]
+        public ActionResult Type(FormCollection form)
+        {
+            string x = form["Alias"];
+            int i = Int32.Parse(x);
+            return RedirectToAction("Create", routeValues: new { id = i} ) ;
+        }
+    }
 }

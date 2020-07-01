@@ -1,0 +1,87 @@
+﻿@model BonoLogin.Models.DatosEmisor
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Registrar";
+}
+
+<div class="container w-100 d-flex justify-content-center">
+    <div class="card text-center mt-5 p-3 shadow">
+        <h2>Añadir nuevo registro:</h2>
+        <hr />
+        <div class="text-left">
+            <h4>
+                Datos del Emisor:
+            </h4>
+            <div class="text-right">
+                @Html.ActionLink("Volver a la lista", "Index", routeValues: null, htmlAttributes: new { @class = "btn bg-own-blue" })
+            </div>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <hr />
+            <div>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.Alias, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Alias, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Alias, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.Ianual, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Ianual, new { htmlAttributes = new { @class = "form-control", Value = "0.0", type = "number", step = "any" } })
+                    @Html.ValidationMessageFor(model => model.Ianual, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.Ir, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Ir, new { htmlAttributes = new { @class = "form-control", Value = "30", type = "number", step = "any" } })
+                    @Html.ValidationMessageFor(model => model.Ir, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.Pprima, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Pprima, new { htmlAttributes = new { @class = "form-control", Value = "1.0", type = "number", step = "any" } })
+                    @Html.ValidationMessageFor(model => model.Pprima, "", new { @class = "text-danger" })
+                </div>
+
+                @*Estructuración*@
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.Pestructuracion, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Pestructuracion, new { htmlAttributes = new { @class = "form-control", Value = "0.45", type = "number", step = "any" } })
+                    @Html.ValidationMessageFor(model => model.Pestructuracion, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.Pcolocacion, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Pcolocacion, new { htmlAttributes = new { @class = "form-control", Value = "0.25", type = "number", step = "any" } })
+                    @Html.ValidationMessageFor(model => model.Pcolocacion, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.Pflotacion, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Pflotacion, new { htmlAttributes = new { @class = "form-control", Value = "0.15", type = "number", step = "any" } })
+                    @Html.ValidationMessageFor(model => model.Pflotacion, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group text-left">
+                    @Html.LabelFor(model => model.PCavali, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.PCavali, new { htmlAttributes = new { @class = "form-control", Value = "0.50", type = "number", step = "any" } })
+                    @Html.ValidationMessageFor(model => model.PCavali, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="mt-3 mb-3">
+                <input type="submit" value="Registrar" class="btn bg-own-green-dark w-100" id="btnSub" />
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Volver a la lista", "Index", routeValues: null, htmlAttributes: new { @class = "btn bg-own-blue" })
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

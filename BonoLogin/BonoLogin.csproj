@@ -180,6 +180,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DatosBonoController.cs" />
+    <Compile Include="Controllers\DatosEmisorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -241,9 +242,30 @@
     <Compile Include="Migrations\202006290405279_deploydetails.Designer.cs">
       <DependentUpon>202006290405279_deploydetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006301813161_rolesjaja1.cs" />
+    <Compile Include="Migrations\202006301813161_rolesjaja1.Designer.cs">
+      <DependentUpon>202006301813161_rolesjaja1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006302030471_datosemisor.cs" />
+    <Compile Include="Migrations\202006302030471_datosemisor.Designer.cs">
+      <DependentUpon>202006302030471_datosemisor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006302052085_datosemisor4.cs" />
+    <Compile Include="Migrations\202006302052085_datosemisor4.Designer.cs">
+      <DependentUpon>202006302052085_datosemisor4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006302144157_emisordefault.cs" />
+    <Compile Include="Migrations\202006302144157_emisordefault.Designer.cs">
+      <DependentUpon>202006302144157_emisordefault.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007010033316_rolesfull.cs" />
+    <Compile Include="Migrations\202007010033316_rolesfull.Designer.cs">
+      <DependentUpon>202007010033316_rolesfull.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DatosBono.cs" />
+    <Compile Include="Models\DatosEmisor.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PGracia.cs" />
@@ -422,6 +444,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\DatosEmisor\Index.cshtml" />
+    <Content Include="Views\DatosEmisor\Details.cshtml" />
+    <Content Include="Views\DatosEmisor\Create.cshtml" />
+    <Content Include="Views\DatosEmisor\Delete.cshtml" />
+    <Content Include="Views\DatosBono\Type.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -473,6 +500,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006290405279_deploydetails.resx">
       <DependentUpon>202006290405279_deploydetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006301813161_rolesjaja1.resx">
+      <DependentUpon>202006301813161_rolesjaja1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006302030471_datosemisor.resx">
+      <DependentUpon>202006302030471_datosemisor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006302052085_datosemisor4.resx">
+      <DependentUpon>202006302052085_datosemisor4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006302144157_emisordefault.resx">
+      <DependentUpon>202006302144157_emisordefault.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007010033316_rolesfull.resx">
+      <DependentUpon>202007010033316_rolesfull.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

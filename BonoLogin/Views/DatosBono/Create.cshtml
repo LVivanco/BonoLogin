@@ -169,44 +169,44 @@
                 <div class="col-md col-12 card-fluid m-2">
                     <div class="form-group text-left">
                         @Html.LabelFor(model => model.Ianual, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Ianual, new { htmlAttributes = new { @class = "form-control", Value = "0.0", type = "number", step = "any" } })
+                        @Html.EditorFor(model => model.Ianual, new { htmlAttributes = new { @class = "form-control", Value = ViewBag.IAnual, type = "number", step = "any" } })
                         @Html.ValidationMessageFor(model => model.Ianual, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group text-left">
                         @Html.LabelFor(model => model.Ir, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Ir, new { htmlAttributes = new { @class = "form-control", Value = "30", type = "number", step = "any" } })
+                        @Html.EditorFor(model => model.Ir, new { htmlAttributes = new { @class = "form-control", Value = ViewBag.Ir, type = "number", step = "any" } })
                         @Html.ValidationMessageFor(model => model.Ir, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group text-left">
                         @Html.LabelFor(model => model.Pprima, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Pprima, new { htmlAttributes = new { @class = "form-control", Value = "1.0", type = "number", step = "any" } })
+                        @Html.EditorFor(model => model.Pprima, new { htmlAttributes = new { @class = "form-control", Value = ViewBag.Pprima, type = "number", step = "any" } })
                         @Html.ValidationMessageFor(model => model.Pprima, "", new { @class = "text-danger" })
                     </div>
 
                     @*Estructuración*@
                     <div class="form-group text-left">
                         @Html.LabelFor(model => model.Pestructuracion, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Pestructuracion, new { htmlAttributes = new { @class = "form-control", Value = "0.45", type = "number", step = "any" } })
+                        @Html.EditorFor(model => model.Pestructuracion, new { htmlAttributes = new { @class = "form-control", Value = ViewBag.Pestructuracion, type = "number", step = "any" } })
                         @Html.ValidationMessageFor(model => model.Pestructuracion, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group text-left">
                         @Html.LabelFor(model => model.Pcolocacion, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Pcolocacion, new { htmlAttributes = new { @class = "form-control", Value = "0.25", type = "number", step = "any" } })
+                        @Html.EditorFor(model => model.Pcolocacion, new { htmlAttributes = new { @class = "form-control", Value = ViewBag.Pcolocacion, type = "number", step = "any" } })
                         @Html.ValidationMessageFor(model => model.Pcolocacion, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group text-left">
                         @Html.LabelFor(model => model.Pflotacion, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Pflotacion, new { htmlAttributes = new { @class = "form-control", Value = "0.15", type = "number", step = "any" } })
+                        @Html.EditorFor(model => model.Pflotacion, new { htmlAttributes = new { @class = "form-control", Value = ViewBag.Pflotacion, type = "number", step = "any" } })
                         @Html.ValidationMessageFor(model => model.Pflotacion, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group text-left">
                         @Html.LabelFor(model => model.PCavali, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.PCavali, new { htmlAttributes = new { @class = "form-control", Value = "0.50", type = "number", step = "any" } })
+                        @Html.EditorFor(model => model.PCavali, new { htmlAttributes = new { @class = "form-control", Value = ViewBag.Pcavali, type = "number", step = "any" } })
                         @Html.ValidationMessageFor(model => model.PCavali, "", new { @class = "text-danger" })
                     </div>
                 </div>

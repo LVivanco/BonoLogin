@@ -11,7 +11,7 @@ namespace BonoLogin.Models
     [Table("User")]
     public class ApplicationUser : IdentityUser
     {
-            
+             
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {   
 
@@ -33,6 +33,8 @@ namespace BonoLogin.Models
         public DbSet<DatosBono> DatosBono { get; set; }
         public DbSet<PGracia> PGracia { get; set; }
         public DbSet<ResultadoBono> ResultadoBono { get; set; }
+
+        public DbSet<DatosEmisor> DatosEmisor { get; set; }
   
         public static ApplicationDbContext Create()
         {

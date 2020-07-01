@@ -1,0 +1,83 @@
+﻿@model BonoLogin.Models.DatosEmisor
+@{
+    ViewBag.Title = "Detalles";
+    ViewBag.Alias = Model.Alias;
+}
+
+<!--BODY-->
+<div class="container w-100">
+    <div class="card text-center mt-5 p-3 shadow">
+        <h2>Detalle @ViewBag.name</h2>
+        <hr />
+        <div class="text-left">
+            @Html.ActionLink("Regresar a la lista", "Index", routeValues: null, htmlAttributes: new { @class = "btn bg-own-green-light" })
+        </div>
+        <hr />
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ianual)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Ianual)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ir)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Ir)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pprima)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pprima)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pestructuracion)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pestructuracion)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pcolocacion)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pcolocacion)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pflotacion)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pflotacion)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PCavali)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.PCavali)
+                </td>
+            </tr>
+          
+        </table>
+        <hr />
+        <div class="text-left">
+            @* @Html.ActionLink("Editar", "Edit", new { id = Model.Id })*@
+            @Html.ActionLink("Regresar a la lista", "Index", routeValues: null, htmlAttributes: new { @class = "btn bg-own-green-light" })
+        </div>
+    </div>
+</div>
+
+<!--BODY-->

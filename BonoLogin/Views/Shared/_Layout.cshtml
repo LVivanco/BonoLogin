@@ -36,6 +36,11 @@
                     <li class="nav-item own-hover">
                         @Html.ActionLink("Registros", "Index", "DatosBono", routeValues: null, htmlAttributes: new { @class = "nav-link" })
                     </li>
+                    if (User.IsInRole("Emisor")) { 
+                    <li class="nav-item own-hover">
+                        @Html.ActionLink("Administrar","Index","DatosEmisor",routeValues: null, htmlAttributes: new { @class = "nav-link"})
+                    </li>
+                    }
                 }
             </ul>
             @Html.Partial("_LoginPartial")
