@@ -50,7 +50,7 @@ namespace BonoLogin.Services
                     d = 1;
                     break;
                 case "semanal":
-                    d = 1;
+                    d = 7;
                     break;
                 case "quincenal":
                     d = 15;
