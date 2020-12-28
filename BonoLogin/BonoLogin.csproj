@@ -278,6 +278,10 @@
     <Compile Include="Migrations\202007012218476_tasasperiodo.Designer.cs">
       <DependentUpon>202007012218476_tasasperiodo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012280306361_newmigration.cs" />
+    <Compile Include="Migrations\202012280306361_newmigration.Designer.cs">
+      <DependentUpon>202012280306361_newmigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DatosBono.cs" />
@@ -543,6 +547,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007012218476_tasasperiodo.resx">
       <DependentUpon>202007012218476_tasasperiodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012280306361_newmigration.resx">
+      <DependentUpon>202012280306361_newmigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
